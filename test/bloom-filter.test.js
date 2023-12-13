@@ -29,27 +29,27 @@ describe('BloomFilter', () => {
     assert.strictEqual(typeof store.setValue, 'function');
   });
 
-  it.optional('should hash deterministically with all 3 hash functions', () => {
-    const str1 = 'apple';
+    it.optional('should hash deterministically with all 3 hash functions', () => {
+      const str1 = 'apple';
 
-    assert.strictEqual(bloomFilter.hash1(str1), bloomFilter.hash1(str1));
-    assert.strictEqual(bloomFilter.hash2(str1), bloomFilter.hash2(str1));
-    assert.strictEqual(bloomFilter.hash3(str1), bloomFilter.hash3(str1));
+      assert.strictEqual(bloomFilter.hash1(str1), bloomFilter.hash1(str1));
+      assert.strictEqual(bloomFilter.hash2(str1), bloomFilter.hash2(str1));
+      assert.strictEqual(bloomFilter.hash3(str1), bloomFilter.hash3(str1));
 
-    assert.strictEqual(bloomFilter.hash1(str1), 14);
-    assert.strictEqual(bloomFilter.hash2(str1), 43);
-    assert.strictEqual(bloomFilter.hash3(str1), 10);
+      assert.strictEqual(bloomFilter.hash1(str1), 14);
+      assert.strictEqual(bloomFilter.hash2(str1), 43);
+      assert.strictEqual(bloomFilter.hash3(str1), 10);
 
-    const str2 = 'orange';
+      const str2 = 'orange';
 
-    assert.strictEqual(bloomFilter.hash1(str2), bloomFilter.hash1(str2));
-    assert.strictEqual(bloomFilter.hash2(str2), bloomFilter.hash2(str2));
-    assert.strictEqual(bloomFilter.hash3(str2), bloomFilter.hash3(str2));
+      assert.strictEqual(bloomFilter.hash1(str2), bloomFilter.hash1(str2));
+      assert.strictEqual(bloomFilter.hash2(str2), bloomFilter.hash2(str2));
+      assert.strictEqual(bloomFilter.hash3(str2), bloomFilter.hash3(str2));
 
-    assert.strictEqual(bloomFilter.hash1(str2), 0);
-    assert.strictEqual(bloomFilter.hash2(str2), 61);
-    assert.strictEqual(bloomFilter.hash3(str2), 10);
-  });
+      assert.strictEqual(bloomFilter.hash1(str2), 0);
+      assert.strictEqual(bloomFilter.hash2(str2), 61);
+      assert.strictEqual(bloomFilter.hash3(str2), 10);
+    });
 
   it.optional('should create an array with 3 hash values', () => {
     assert.strictEqual(bloomFilter.getHashValues('abc').length, 3);
